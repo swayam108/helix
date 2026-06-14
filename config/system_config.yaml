@@ -1,0 +1,44 @@
+system:
+  name: HELIX
+  version: 0.1.0
+  description: Local-First Multi-Agent AI Operating System
+  max_concurrent_agents: 5
+  memory_backend: chroma  # Options: chroma, milvus, pinecone
+  enable_resource_monitoring: true
+  
+ollama:
+  base_url: http://localhost:11434
+  default_model: qwen:32b
+  timeout_seconds: 300
+  embedding_model: nomic-embed-text
+  
+agents:
+  enabled:
+    - commander
+    - planner
+    - research
+    - coder
+    - automation
+  
+  defaults:
+    timeout_seconds: 300
+    max_retries: 3
+    max_concurrent_tasks: 3
+
+safety:
+  enable_sandboxing: true
+  require_user_confirmation: false
+  audit_logging_enabled: true
+  max_audit_log_size: 10000
+
+memory:
+  short_term_size: 10000
+  long_term_db_path: memory_store/helix_memory.db
+  enable_semantic_search: true
+  max_semantic_results: 10
+
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  log_dir: logs
+  file_retention_days: 30
+  console_output: true

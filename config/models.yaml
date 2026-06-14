@@ -1,0 +1,57 @@
+models:
+  qwen:32b:
+    name: Qwen 32B
+    description: General purpose reasoning and instruction following
+    use_cases:
+      - general_reasoning
+      - planning
+      - coordination
+    context_length: 32768
+    best_for: Complex reasoning, multi-step planning
+
+  deepseek-coder:33b:
+    name: DeepSeek Coder 33B
+    description: Code generation and understanding
+    use_cases:
+      - code_generation
+      - code_review
+      - debugging
+    context_length: 4096
+    best_for: Software development tasks
+
+  deepseek-r1:32b:
+    name: DeepSeek R1 32B
+    description: Advanced reasoning and complex problem solving
+    use_cases:
+      - complex_reasoning
+      - automation
+      - strategic_planning
+    context_length: 16384
+    best_for: Complex reasoning with step-by-step analysis
+
+  llama2:latest:
+    name: Llama 2
+    description: General purpose language model
+    use_cases:
+      - research
+      - summarization
+      - general_tasks
+    context_length: 4096
+    best_for: Research and information synthesis
+
+  phi:latest:
+    name: Phi 3.5
+    description: Fast, lightweight model for quick responses
+    use_cases:
+      - fast_responses
+      - simple_tasks
+    context_length: 4096
+    best_for: Quick responses with lower resource usage
+
+routing:
+  general_reasoning: qwen:32b
+  code_generation: deepseek-coder:33b
+  complex_reasoning: deepseek-r1:32b
+  fast_response: phi:latest
+  research: llama2:latest
+  vision: llava:latest

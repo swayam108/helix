@@ -1,0 +1,62 @@
+agents:
+  commander:
+    name: Commander
+    type: commander
+    description: Main orchestration engine
+    capabilities:
+      - task_planning
+      - agent_coordination
+      - resource_management
+    preferred_model: qwen:32b
+    timeout_seconds: 300
+
+  planner:
+    name: Planner
+    type: planner
+    description: Task decomposition and planning
+    capabilities:
+      - task_decomposition
+      - dependency_resolution
+      - priority_assignment
+    preferred_model: qwen:32b
+
+  research:
+    name: Research Agent
+    type: research
+    description: Information gathering and summarization
+    capabilities:
+      - web_research
+      - summarization
+      - knowledge_synthesis
+    preferred_model: llama2:latest
+    required_permissions:
+      - network.http
+      - filesystem.read
+
+  coder:
+    name: Coder Agent
+    type: coder
+    description: Code generation and debugging
+    capabilities:
+      - code_generation
+      - debugging
+      - code_review
+    preferred_model: deepseek-coder:33b
+    required_permissions:
+      - filesystem.read
+      - filesystem.write
+      - code.execute
+
+  automation:
+    name: Automation Agent
+    type: automation
+    description: System operations and file handling
+    capabilities:
+      - file_operations
+      - system_commands
+      - workflow_automation
+    preferred_model: deepseek-r1:32b
+    required_permissions:
+      - filesystem.read
+      - filesystem.write
+      - system.execute
